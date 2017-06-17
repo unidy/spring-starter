@@ -1,3 +1,3 @@
 # spring-starter
-Spring Starter
-This is the server side application.
+Angular + Spring
+This is the Spring server application.
