@@ -5,9 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name="user")
 @NamedQuery(name = "User.findByNamePassword", query = "from User user where user.name =?1 and user.password = ?2")
 public class User {
 
