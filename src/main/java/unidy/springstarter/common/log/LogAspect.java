@@ -23,14 +23,25 @@ public class LogAspect {
 		Loggable loggableMethod = method.getAnnotation(Loggable.class);
 		Class<? extends Object> clazz = point.getTarget().getClass();
 		Loggable loggableClass = (Loggable) clazz.getAnnotation(Loggable.class);
-
 		LogLevel logLevel = loggableMethod != null ? loggableMethod.level() : loggableClass.level();
 
 		preHandle(clazz, logLevel, method.getName());
 
-		Object result = handle(point, loggableClass, method, loggableMethod, logLevel);
+		Object result = null;
+		try {
 
-		postHandle(clazz, logLevel, method.getName());
+			result = handle(point, loggableClass, method, loggableMethod, logLevel);
+
+		} catch (Exception e) {
+			printException(point.getTarget().getClass(), e);
+
+			throw e;
+
+		} finally {
+
+			postHandle(clazz, logLevel, method.getName());
+
+		}
 
 		return result;
 	}
@@ -39,7 +50,7 @@ public class LogAspect {
 		Logger.log(clazz, logLevel, PREFIX + message + "() starts execution" + SUFFIX);
 	}
 
-	private Object handle(ProceedingJoinPoint point, Loggable loggableClass, Method method, Loggable loggableMethod, 
+	private Object handle(ProceedingJoinPoint point, Loggable loggableClass, Method method, Loggable loggableMethod,
 			LogLevel logLevel) throws Throwable {
 		printParameters(loggableMethod, point, loggableClass, method, logLevel);
 
@@ -52,7 +63,12 @@ public class LogAspect {
 		printResult(result, loggableMethod, point, loggableClass, logLevel);
 
 		printExecutionTime(point.getTarget().getClass(), logLevel, (endTime - startTime));
+
 		return result;
+	}
+
+	private void printException(Class<? extends Object> clazz, Exception e) {
+		Logger.log(clazz, LogLevel.ERROR, "[Exception]: " + e.toString());
 	}
 
 	private void postHandle(Class<? extends Object> clazz, LogLevel logLevel, String message) {
