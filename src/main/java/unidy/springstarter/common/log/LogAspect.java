@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class LogAspect {
-	private static final String PREFIX = " ------------ ";
-	private static final String SUFFIX = " ------------ ";
+	private static final String	PREFIX	= " ------------ ";
+	private static final String	SUFFIX	= " ------------ ";
 
 	@Around(value = "@within(unidy.springstarter.common.log.Loggable) || @annotation(unidy.springstarter.common.log.Loggable)")
 	public Object around(ProceedingJoinPoint point) throws Throwable {
@@ -50,8 +50,7 @@ public class LogAspect {
 		Logger.log(clazz, logLevel, PREFIX + message + "() starts execution" + SUFFIX);
 	}
 
-	private Object handle(ProceedingJoinPoint point, Loggable loggableClass, Method method, Loggable loggableMethod,
-			LogLevel logLevel) throws Throwable {
+	private Object handle(ProceedingJoinPoint point, Loggable loggableClass, Method method, Loggable loggableMethod, LogLevel logLevel) throws Throwable {
 		printParameters(loggableMethod, point, loggableClass, method, logLevel);
 
 		long startTime = System.currentTimeMillis();
@@ -75,8 +74,7 @@ public class LogAspect {
 		Logger.log(clazz, logLevel, PREFIX + message + "() finished execution" + SUFFIX);
 	}
 
-	private void printParameters(Loggable loggableMethod, ProceedingJoinPoint point, Loggable loggableClass,
-			Method method, LogLevel logLevel) {
+	private void printParameters(Loggable loggableMethod, ProceedingJoinPoint point, Loggable loggableClass, Method method, LogLevel logLevel) {
 		boolean showParams = loggableMethod != null ? loggableMethod.params() : loggableClass.params();
 
 		if (point.getArgs() == null || point.getArgs().length == 0) {
@@ -95,8 +93,7 @@ public class LogAspect {
 		}
 	}
 
-	private void printResult(Object result, Loggable loggableMethod, ProceedingJoinPoint point, Loggable loggableClass,
-			LogLevel logLevel) {
+	private void printResult(Object result, Loggable loggableMethod, ProceedingJoinPoint point, Loggable loggableClass, LogLevel logLevel) {
 		if (result != null) {
 			boolean showResults = loggableMethod != null ? loggableMethod.result() : loggableClass.result();
 			if (showResults) {

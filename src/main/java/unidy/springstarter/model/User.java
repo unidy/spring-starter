@@ -4,27 +4,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+	private Integer	id;
 
-	private String name;
-	private String email;
-	private String password;
+	private String	name;
+	private String	email;
+	private String	password;
 
 	@Override
 	public String toString() {
 		return this.name + "; " + this.email;
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -48,7 +46,6 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 
 	public String getPassword() {
 		return password;

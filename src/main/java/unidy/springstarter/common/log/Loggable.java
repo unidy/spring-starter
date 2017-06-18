@@ -10,12 +10,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.TYPE, ElementType.METHOD})
+@Target({ ElementType.TYPE, ElementType.METHOD })
 public @interface Loggable {
-	
+
 	LogLevel level() default LogLevel.DEBUG;
-	
+
 	boolean params() default true;
-	
+
 	boolean result() default true;
 }

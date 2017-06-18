@@ -22,32 +22,32 @@ import unidy.springstarter.service.UserService;
 @RequestMapping(path = "/mysql")
 @Loggable(level = LogLevel.INFO)
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@GetMapping(path = "/add")
 	public @ResponseBody User addNewUser(@RequestParam String name, @RequestParam String email, @RequestParam String password) {
 		return userService.add(name, email, password);
 	}
-	
+
 	@PostMapping(path = "/create")
-	public @ResponseBody User addNewUser(@RequestBody  User user) {
+	public @ResponseBody User addNewUser(@RequestBody User user) {
 		return userService.add(user.getName(), user.getEmail(), user.getPassword());
 	}
-	
-	@GetMapping(path="all")
+
+	@GetMapping(path = "all")
 	@ResponseBody
 	public Iterable<User> getAllUsers() {
 		return userService.findAll();
 	}
-	
-	@GetMapping(path="login")
+
+	@GetMapping(path = "login")
 	public @ResponseBody User login(@RequestParam String name, @RequestParam String password) {
 		User user = userService.findByNamePassword(name, password);
 		if (user != null) {
 			user.setPassword("encripted");
-		}else {
+		} else {
 			throw new EntityNotFoundException();
 		}
 		return user;
