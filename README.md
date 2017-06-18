@@ -2,11 +2,11 @@
 
 This is the Spring server application.
 
-## How to?
+# How to?
 
 This spring server provides restful service for the Angular-Starter web application.
 
-## Features
+# Features
 
 1. Spring & Angular
 2. Spring Boot
@@ -17,5 +17,5 @@ This spring server provides restful service for the Angular-Starter web applicat
 7. MySQL
 8. Log Aspect
 
-# Exception Handler
+## Exception Handler
 Convert specific Exception to generic customized RestfulException.
