@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import unidy.springstarter.common.exception.RestfulException;
 import unidy.springstarter.common.log.Loggable;
 import unidy.springstarter.model.User;
 import unidy.springstarter.service.UserService;
@@ -19,7 +20,6 @@ import unidy.springstarter.service.UserService;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(path = "/mysql")
-@EnableAspectJAutoProxy(proxyTargetClass = true)
 @Loggable(level = LogLevel.INFO)
 public class UserController {
 	
@@ -37,7 +37,8 @@ public class UserController {
 	}
 	
 	@GetMapping(path="all")
-	public @ResponseBody Iterable<User> getAllUsers() {
+	@ResponseBody
+	public Iterable<User> getAllUsers() {
 		return userService.findAll();
 	}
 	
@@ -46,6 +47,8 @@ public class UserController {
 		User user = userService.findByNamePassword(name, password);
 		if (user != null) {
 			user.setPassword("encripted");
+		}else {
+			throw new RestfulException();
 		}
 		return user;
 	}
