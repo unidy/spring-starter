@@ -1,8 +1,9 @@
 package unidy.springstarter.restful;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.logging.LogLevel;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import unidy.springstarter.common.exception.RestfulException;
 import unidy.springstarter.common.log.Loggable;
 import unidy.springstarter.model.User;
 import unidy.springstarter.service.UserService;
@@ -48,7 +48,7 @@ public class UserController {
 		if (user != null) {
 			user.setPassword("encripted");
 		}else {
-			throw new RestfulException();
+			throw new EntityNotFoundException();
 		}
 		return user;
 	}

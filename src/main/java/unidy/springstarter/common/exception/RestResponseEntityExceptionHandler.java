@@ -71,6 +71,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 	}
 
 	private ResponseEntity<Object> handle(final WebRequest request, final Exception ex, HttpStatus status) {
-		return handleExceptionInternal(ex, ex.toString(), new HttpHeaders(), status, request);
+		RestfulException e = new RestfulException(ex.getMessage());
+		return handleExceptionInternal(ex, e.toString(), new HttpHeaders(), status, request);
 	}
 }
