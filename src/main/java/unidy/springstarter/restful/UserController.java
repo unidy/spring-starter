@@ -1,6 +1,7 @@
 package unidy.springstarter.restful;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.logging.LogLevel;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +20,7 @@ import unidy.springstarter.service.UserService;
 @RestController
 @RequestMapping(path = "/mysql")
 @EnableAspectJAutoProxy(proxyTargetClass = true)
-@Loggable
+@Loggable(level = LogLevel.INFO)
 public class UserController {
 	
 	@Autowired

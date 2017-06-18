@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Target({ElementType.TYPE, ElementType.METHOD})
 public @interface Loggable {
 	
-	LogLevel value() default LogLevel.INFO;
+	LogLevel level() default LogLevel.DEBUG;
 	
 	boolean params() default true;
 	

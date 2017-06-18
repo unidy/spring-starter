@@ -23,7 +23,7 @@ public class LogAspect {
 		Loggable loggableClass = proceedingJoinPoint.getTarget().getClass().getAnnotation(Loggable.class);
 
 		// get current log level
-		LogLevel logLevel = loggableMethod != null ? loggableMethod.value() : loggableClass.value();
+		LogLevel logLevel = loggableMethod != null ? loggableMethod.level() : loggableClass.level();
 
 		String prefix = " ------------ ";
 		String suffix = " ------------ ";
