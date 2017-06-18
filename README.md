@@ -14,4 +14,4 @@ This spring server provides restful service for the Angular-Starter web applicat
 4. JPA & MySQL
 5. MVC
 6. Cross Origin Resource Sharing (CORS)
-7. Spring
+7. Log Aspect
