@@ -16,5 +16,6 @@ This spring server provides restful service for the Angular-Starter web applicat
 6. JPA
 7. MySQL
 8. Log Aspect
-9. Exception Handler
 
+# Exception Handler
+Convert specific Exception to generic customized RestfulException.
