@@ -10,7 +10,6 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="user")
-@NamedQuery(name = "User.findByNamePassword", query = "from User user where user.name =?1 and user.password = ?2")
 public class User {
 
 	@Id

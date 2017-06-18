@@ -1,6 +1,7 @@
 package unidy.springstarter.service;
+ 
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -8,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 
 import unidy.springstarter.dao.UserDao;
 import unidy.springstarter.model.User;
@@ -35,11 +35,13 @@ public class UserService {
 		return user;
 	}
 	
-	public ArrayList<User> findAll() {
-		return (ArrayList<User>)this.userDao.findAll();
+	public List<User> findAll() {
+		return (List<User>)this.userDao.findAll();
 	}
 	
 	public User findByNamePassword(String name, String password) {
-		return userDao.findByNamePassword(name, password);
+		List<User> users = userDao.findByNamePassword(name, password);
+		
+		return users.size() > 0 ? users.get(0) : null;
 	}
 }
