@@ -32,3 +32,10 @@ Usage:
 
 ## Exception Handler
 Convert specific Exception to generic customized RestfulException.
+
+# Environment
+1. Spring 4
+2. Spring Boot
+3. MySQL
+4. Maven
+5. Eclipse

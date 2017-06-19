@@ -1,4 +1,4 @@
-package unidy.springstarter.restful;
+package unidy.springstarter.controller;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -27,12 +27,14 @@ public class UserController {
 	private UserService userService;
 
 	@GetMapping(path = "/add")
-	public @ResponseBody User addNewUser(@RequestParam String name, @RequestParam String email, @RequestParam String password) {
+	@ResponseBody
+	public User addNewUser(@RequestParam String name, @RequestParam String email, @RequestParam String password) {
 		return userService.add(name, email, password);
 	}
 
 	@PostMapping(path = "/create")
-	public @ResponseBody User addNewUser(@RequestBody User user) {
+	@ResponseBody
+	public User addNewUser(@RequestBody User user) {
 		return userService.add(user.getName(), user.getEmail(), user.getPassword());
 	}
 
@@ -43,7 +45,8 @@ public class UserController {
 	}
 
 	@GetMapping(path = "login")
-	public @ResponseBody User login(@RequestParam String name, @RequestParam String password) {
+	@ResponseBody
+	public User login(@RequestParam String name, @RequestParam String password) {
 		User user = userService.findByNamePassword(name, password);
 		if (user != null) {
 			user.setPassword("encripted");

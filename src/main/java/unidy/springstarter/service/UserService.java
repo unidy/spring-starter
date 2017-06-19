@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import unidy.springstarter.dao.UserDao;
 import unidy.springstarter.model.User;
@@ -14,6 +15,7 @@ public class UserService {
 	@Autowired
 	private UserDao userDao;
 
+	@Transactional
 	public User add(String name, String email, String password) {
 		User user = new User();
 		user.setName(name);
