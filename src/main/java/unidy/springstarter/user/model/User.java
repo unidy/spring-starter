@@ -1,4 +1,4 @@
-package unidy.springstarter.model;
+package unidy.springstarter.user.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

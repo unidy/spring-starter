@@ -1,4 +1,4 @@
-package unidy.springstarter.service;
+package unidy.springstarter.user.service;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import unidy.springstarter.dao.UserDao;
-import unidy.springstarter.model.User;
+import unidy.springstarter.user.dao.*;
+import unidy.springstarter.user.model.*;
 
 @Component
 public class UserService {
