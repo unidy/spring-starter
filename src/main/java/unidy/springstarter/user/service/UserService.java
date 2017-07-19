@@ -34,4 +34,10 @@ public class UserService {
 
 		return users.size() > 0 ? users.get(0) : null;
 	}
+	
+	public User findByEmail(String email) {
+		List<User> users = userDao.findByEmail(email);
+		
+		return users.size() > 0 ? users.get(0) : null;
+	}
 }

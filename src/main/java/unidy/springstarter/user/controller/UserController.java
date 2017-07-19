@@ -30,12 +30,17 @@ public class UserController {
 	}
 
 	@PostMapping(path = "/create")
-	public User create(@RequestBody User user) {
+	public User create(User user) {
 		return userService.add(user.getName(), user.getEmail(), user.getPassword());
 	}
 
-	@GetMapping(path = "users")
+	@GetMapping(path = "/users")
 	public Iterable<User> listAll() {
 		return userService.findAll();
+	}
+	
+	@GetMapping(path = "/search")
+	public User findByEmail(String email) {
+		return userService.findByEmail(email);
 	}
 }
